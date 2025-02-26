@@ -2,35 +2,35 @@
 
 namespace App\Repositories\Product;
 
-use App\Models\ProductModel;
+use App\Models\Product;
 use App\Data\ProductData;
 
 class ProductRepository implements ProductRepositoryInterface
 {
-    public function getAll()
+    public function all()
     {
-        return ProductModel::all();
+        return Product::all();
     }
 
     public function findById($id)
     {
-        return ProductModel::findOrFail($id);
+        return Product::findOrFail($id);
     }
 
-    public function create(ProductData $productData)
+    public function create(ProductData $productData): Product
     {
-        return ProductModel::create($productData->toArray());
+        return Product::create($productData->toArray());
     }
 
     public function update($id, ProductData $productData)
     {
-        $product = ProductModel::findOrFail($id);
+        $product = Product::find($id);
         $product->update($productData->toArray());
         return $product;
     }
 
     public function delete($id)
     {
-        return ProductModel::destroy($id);
+        return Product::destroy($id);
     }
 }

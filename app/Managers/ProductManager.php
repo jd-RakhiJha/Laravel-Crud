@@ -16,7 +16,7 @@ class ProductManager
 
     public function getAllProducts()
     {
-        return $this->productRepository->getAll();
+        return $this->productRepository->all();
     }
 
     public function getProductById($id)

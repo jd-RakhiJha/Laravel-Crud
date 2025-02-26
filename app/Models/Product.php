@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\LaravelData\WithData;
 
-class ProductModel extends Model
+class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, WithData;
+
 
     protected $table = 'product_models';
 
