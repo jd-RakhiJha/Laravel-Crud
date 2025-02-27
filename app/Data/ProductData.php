@@ -11,17 +11,15 @@ use Spatie\LaravelData\Attributes\Validation\StringType;
 
 class ProductData extends Data
 {
-  public function __construct(
-    #[Required, StringType]
-    public string $name,
+  #[Required, StringType]
+  public string $name;
 
-    #[Required, Numeric]
-    public float $price,
+  #[Required, Numeric]
+  public float $price;
 
-    #[StringType]
-    public ?string $description = null,
+  #[StringType]
+  public ?string $description = null;
 
-    #[Required, IntegerType, Exists('users', 'id')]
-    public int $user_id,
-  ) {}
+  #[Required, IntegerType, Exists('users', 'id')]
+  public int $user_id;
 }

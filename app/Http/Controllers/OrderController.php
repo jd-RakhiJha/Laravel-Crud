@@ -29,6 +29,7 @@ class OrderController extends Controller
 
     public function update(Order $order, OrderData $orderData)
     {
+        $order = $this->orders->findById($order->id);
         return $this->orders->update($order, $orderData);
     }
 
