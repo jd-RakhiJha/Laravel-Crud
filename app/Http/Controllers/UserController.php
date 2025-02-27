@@ -4,20 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Data\UserData;
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Managers\UserManager;
 use App\Repositories\Users\UsersRepository;
 
 class UserController extends Controller
 {
     public function __construct(
-        private UserManager $userManager,
         private UsersRepository $users
     ) {}
 
     public function index()
     {
-        return UserData::collect($this->userManager->getAllUsers());
+        return UserData::collect($this->users->all());
     }
 
     public function store(UserData $userData)

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Data\OrderData;
-use App\Managers\OrderManager;
 use App\Models\Order;
 use App\Repositories\Orders\OrdersRepository;
 
