@@ -10,13 +10,12 @@ use App\Repositories\Product\ProductRepository;
 class ProductController extends Controller
 {
     public function __construct(
-        private ProductManager $productManager,
         private ProductRepository $products
     ) {}
 
     public function index()
     {
-        return ProductData::collect($this->productManager->all());
+        return ProductData::collect($this->products->all());
     }
 
     public function store(ProductData $productData)

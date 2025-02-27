@@ -10,32 +10,31 @@ use App\Repositories\Category\CategoryRepository;
 class CategoryController extends Controller
 {
     public function __construct(
-        private CategoryManager $categoryManager,
-        private CategoryRepository $category
+        private CategoryRepository $categories
     ) {}
 
     public function index()
     {
-        return CategoryData::collect($this->categoryManager->getAllCategory());
+        return CategoryData::collect($this->categories->all());
     }
 
-    public function store(CategoryData $categoryData)
+    public function store(CategoryData $categoriesData)
     {
-        return $this->category->create($categoryData);
+        return $this->categories->create($categoriesData);
     }
 
-    public function show(Category $category)
+    public function show(Category $categories)
     {
-        return $this->category->findById($category);
+        return $this->categories->findById($categories);
     }
 
-    public function update(Category $id, CategoryData $categoryData)
+    public function update(Category $id, CategoryData $categoriesData)
     {
-        return $this->category->update($id, $categoryData);
+        return $this->categories->update($id, $categoriesData);
     }
 
-    public function destroy(Category $category)
+    public function destroy(Category $categories)
     {
-        return $this->category->delete($category);
+        return $this->categories->delete($categories);
     }
 }

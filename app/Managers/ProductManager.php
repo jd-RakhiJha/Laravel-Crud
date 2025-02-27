@@ -8,30 +8,10 @@ use App\Models\Product;
 
 class ProductManager
 {
-    protected ProductRepository $productRepository;
+    protected ProductRepository $products;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct()
     {
-        $this->productRepository = $productRepository;
-    }
-
-    public function all()
-    {
-        return $this->productRepository->all();
-    }
-
-    public function store(ProductData $productData)
-    {
-        return $this->productRepository->create($productData);
-    }
-
-    public function update(Product $product, ProductData $productData)
-    {
-        return $this->productRepository->update($product->id, $productData);
-    }
-
-    public function delete($id)
-    {
-        return $this->productRepository->delete($id);
+        $this->products = new ProductRepository;
     }
 }
