@@ -4,12 +4,11 @@ namespace App\Managers;
 
 use App\Repositories\Category\CategoryRepository;
 use App\Data\CategoryData;
+use App\Models\Category;
 
-
-class  CategoryManager
+class CategoryManager
 {
-
-    protected $categories;
+    protected CategoryRepository $categories;
 
     public function __construct(CategoryRepository $categoryRepository)
     {
@@ -21,9 +20,9 @@ class  CategoryManager
         return $this->categories->all();
     }
 
-    public function getCategoryById($id)
+    public function getCategoryById(Category $category)
     {
-        return $this->categories->findById($id);
+        return $this->categories->findById($category->id);
     }
 
     public function createCategory(CategoryData $categoryData)
@@ -31,13 +30,13 @@ class  CategoryManager
         return $this->categories->create($categoryData);
     }
 
-    public function updateCategory($id, CategoryData $categoryData)
+    public function updateCategory(Category $category, CategoryData $categoryData)
     {
-        return $this->categories->update($id, $categoryData);
+        return $this->categories->update($category->id, $categoryData);
     }
 
-    public function deleteCategory($id)
+    public function deleteCategory(Category $category)
     {
-        return $this->categories->delete($id);
+        return $this->categories->delete($category->id);
     }
 }

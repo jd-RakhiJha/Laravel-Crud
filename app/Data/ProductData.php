@@ -22,6 +22,6 @@ class ProductData extends Data
     public ?string $description = null,
 
     #[Required, IntegerType, Exists('users', 'id')]
-    public int $user_id, // Ensures user_id is an integer and exists in users table
+    public int $user_id,
   ) {}
 }

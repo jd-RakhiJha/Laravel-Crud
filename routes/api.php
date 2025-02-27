@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -23,7 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('products', ProductController::class)->only(['index', 'store', 'update', 'destroy']);
 
+Route::Resource('category', CategoryController::class);
 
-Route::apiResource('category', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+Route::resource('/users', UserController::class);
 
-Route::resource('/users', UserController::class)->only('index', 'store', 'show', 'update', 'destroy');
+Route::resource('orders', OrderController::class);

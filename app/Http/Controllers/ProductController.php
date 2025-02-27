@@ -3,38 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Data\ProductData;
+use App\Models\Product;
 use App\Managers\ProductManager;
-use App\Repositories\Product\ProductRepository;
 
 class ProductController extends Controller
 {
     public function __construct(
-        private ProductManager $productManager,
-        private ProductRepository $products
+        private ProductManager $productManager
     ) {}
 
     public function index()
     {
-        return ProductData::collect($this->products->all());
+        return ProductData::collect($this->productManager->getAllProducts());
     }
 
     public function store(ProductData $productData)
     {
-        return $this->products->create($productData);
+        return $this->productManager->createProduct($productData);
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        return $this->productManager->getProductById($id);
+        return $this->productManager->getProductById($product);
     }
 
-    public function update(ProductData $productData, $id)
+    public function update(Product $product, ProductData $productData)
     {
-        return $this->productManager->updateProduct($id, $productData);
+        return $this->productManager->updateProduct($product, $productData);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        return $this->productManager->deleteProduct($id);
+        return $this->productManager->deleteProduct($product);
     }
 }

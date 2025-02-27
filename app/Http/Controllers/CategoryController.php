@@ -4,40 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Data\CategoryData;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Managers\CategoryManager;
-use App\Repositories\Category\CategoryRepository;
 
 class CategoryController extends Controller
 {
-
     public function __construct(
-        private CategoryManager $categoryManager,
-        private CategoryRepository $Category
+        private CategoryManager $categoryManager
     ) {}
 
     public function index()
     {
-        return CategoryData::collect($this->Category->all());
+        return CategoryData::collect($this->categoryManager->getAllCategory());
     }
 
     public function store(CategoryData $categoryData)
     {
-        return $this->Category->create($categoryData)->getData();
+        return $this->categoryManager->createCategory($categoryData);
     }
 
-    public function show($id)
+    public function show(Category $category)
     {
-        return $this->categoryManager->getCategoryById($id);
+        return $this->categoryManager->getCategoryById($category);
     }
 
-    public function update(CategoryData $categoryData, $id)
+    public function update(Category $category, CategoryData $categoryData)
     {
-        return $this->categoryManager->updateCategory($id, $categoryData);
+        return $this->categoryManager->updateCategory($category, $categoryData);
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        return $this->categoryManager->deleteCategory($id);
+        return $this->categoryManager->deleteCategory($category);
     }
 }

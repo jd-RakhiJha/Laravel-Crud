@@ -5,7 +5,7 @@ namespace App\Repositories\Users;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-class UsersRepository implements UsersRepositoryInterface
+class UsersRepository
 {
     public function all(): Collection
     {

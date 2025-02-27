@@ -4,10 +4,11 @@ namespace App\Managers;
 
 use App\Repositories\Product\ProductRepository;
 use App\Data\ProductData;
+use App\Models\Product;
 
 class ProductManager
 {
-    protected $productRepository;
+    protected ProductRepository $productRepository;
 
     public function __construct(ProductRepository $productRepository)
     {
@@ -19,9 +20,9 @@ class ProductManager
         return $this->productRepository->all();
     }
 
-    public function getProductById($id)
+    public function getProductById(Product $product)
     {
-        return $this->productRepository->findById($id);
+        return $this->productRepository->findById($product->id);
     }
 
     public function createProduct(ProductData $productData)
@@ -29,13 +30,13 @@ class ProductManager
         return $this->productRepository->create($productData);
     }
 
-    public function updateProduct($id, ProductData $productData)
+    public function updateProduct(Product $product, ProductData $productData)
     {
-        return $this->productRepository->update($id, $productData);
+        return $this->productRepository->update($product->id, $productData);
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct(Product $product)
     {
-        return $this->productRepository->delete($id);
+        return $this->productRepository->delete($product->id);
     }
 }
