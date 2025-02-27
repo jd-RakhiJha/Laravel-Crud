@@ -27,5 +27,6 @@ Route::resource('products', ProductController::class)->only(['index', 'store', '
 Route::Resource('category', CategoryController::class);
 
 Route::resource('/users', UserController::class);
+Route::get('/users/{user}/orders', [UserController::class, 'getUserOrders'])->name('users.orders');
 
 Route::resource('orders', OrderController::class);

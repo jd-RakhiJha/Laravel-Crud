@@ -9,12 +9,12 @@ class UsersRepository
 {
     public function all(): Collection
     {
-        return User::with('product')->get()->collect();
+        return User::with('orders')->get();
     }
 
     public function findById($id): User
     {
-        return User::with('product')->findOrFail($id);
+        return User::with('orders')->findOrFail($id);
     }
 
     public function create($userData): User
@@ -32,5 +32,10 @@ class UsersRepository
     public function delete($id): bool
     {
         return User::destroy($id);
+    }
+
+    public function getUserOrders($userId): Collection
+    {
+        return User::findOrFail($userId)->orders;
     }
 }

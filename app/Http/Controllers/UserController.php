@@ -36,4 +36,10 @@ class UserController extends Controller
     {
         return $this->users->delete($user);
     }
+
+    public function getUserOrders(User $user)
+    {
+        $orders = $this->users->getUserOrders($user->id);
+        return $orders;
+    }
 }

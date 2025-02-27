@@ -17,6 +17,12 @@ class Order extends Model
         'total_price'
     ];
 
+    protected $casts = [
+        'user_id'       => 'integer',
+        'order_number'  => 'string',
+        'total_price'   => 'decimal:2',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
