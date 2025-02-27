@@ -28,9 +28,9 @@ class ProductController extends Controller
         return $this->products->findById($product);
     }
 
-    public function update(Product $id, ProductData $productData)
+    public function update(Product $product, ProductData $productData)
     {
-        return $this->products->update($id, $productData);
+        return $this->products->update($product, $productData);
     }
 
     public function destroy($id)

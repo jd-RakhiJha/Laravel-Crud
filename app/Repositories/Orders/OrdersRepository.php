@@ -22,9 +22,8 @@ class OrdersRepository
         return Order::create($orderData->toArray());
     }
 
-    public function update(Order $id, OrderData $data)
+    public function update(Order $order, OrderData $data)
     {
-        $order = Order::findOrFail($id);
         $order->update($data->toArray());
         return $order;
     }

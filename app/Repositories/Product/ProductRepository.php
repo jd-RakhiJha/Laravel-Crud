@@ -22,9 +22,8 @@ class ProductRepository
         return Product::create($productData->toArray());
     }
 
-    public function update(Product $id, ProductData $productData)
+    public function update(Product $product, ProductData $productData)
     {
-        $product = Product::find($id);
         $product->update($productData->toArray());
         return $product;
     }
