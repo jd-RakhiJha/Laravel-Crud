@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function store(ProductData $productData)
     {
-        return $this->products->create($productData)->getData();
+        return $this->products->create($productData);
     }
 
     public function show($id)

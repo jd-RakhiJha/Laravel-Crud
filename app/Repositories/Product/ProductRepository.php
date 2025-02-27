@@ -17,11 +17,11 @@ class ProductRepository implements ProductRepositoryInterface
         return Product::findOrFail($id);
     }
 
-    public function create(ProductData $productData): Product
+    public function create(ProductData $productData)
     {
+        // dd($productData->toArray());
         return Product::create($productData->toArray());
     }
-
     public function update($id, ProductData $productData)
     {
         $product = Product::find($id);
