@@ -20,22 +20,22 @@ class UserManager
         return $this->usersRepository->all();
     }
 
-    public function getUserById(User $user)
+    public function findById(User $user)
     {
         return $this->usersRepository->findById($user->id);
     }
 
-    public function createUser(UserData $userData)
+    public function create(UserData $userData)
     {
         return $this->usersRepository->create($userData);
     }
 
-    public function updateUser(User $user, UserData $userData)
+    public function update(User $user, UserData $userData)
     {
         return $this->usersRepository->update($user->id, $userData);
     }
 
-    public function deleteUser(User $user)
+    public function delete(User $user)
     {
         return $this->usersRepository->delete($user->id);
     }

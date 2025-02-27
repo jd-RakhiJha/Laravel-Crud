@@ -2,41 +2,41 @@
 
 namespace App\Managers;
 
-use App\Repositories\Orders\OrdersRepositoryInterface;
+use App\Repositories\Orders\OrdersRepository;
 use App\Data\OrderData;
 use App\Models\Order;
 
 class OrderManager
 {
-    protected OrdersRepositoryInterface $ordersRepository;
+    protected OrdersRepository $ordersRepository;
 
-    public function __construct(OrdersRepositoryInterface $ordersRepository)
+    public function __construct(OrdersRepository $orders)
     {
-        $this->ordersRepository = $ordersRepository;
+        $this->ordersRepository = $orders;
     }
 
-    public function getAllOrders()
+    public function all()
     {
         return $this->ordersRepository->all();
     }
 
-    public function getOrderById(Order $order)
+    public function findById(Order $order)
     {
         return $this->ordersRepository->findById($order->id);
     }
 
-    public function createOrder(OrderData $data)
+    public function create(OrderData $data)
     {
         return $this->ordersRepository->create($data);
     }
 
-    public function updateOrder(Order $order, OrderData $data)
+    public function update(Order $order, OrderData $data)
     {
         return $this->ordersRepository->update($order->id, $data);
     }
 
-    public function deleteOrder(Order $order)
+    public function delete($id)
     {
-        return $this->ordersRepository->delete($order->id);
+        return $this->ordersRepository->delete($id);
     }
 }

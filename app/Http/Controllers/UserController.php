@@ -6,11 +6,13 @@ use App\Data\UserData;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Managers\UserManager;
+use App\Repositories\Users\UsersRepository;
 
 class UserController extends Controller
 {
     public function __construct(
-        private UserManager $userManager
+        private UserManager $userManager,
+        private UsersRepository $users
     ) {}
 
     public function index()
@@ -20,21 +22,21 @@ class UserController extends Controller
 
     public function store(UserData $userData)
     {
-        return $this->userManager->createUser($userData);
+        return $this->users->create($userData);
     }
 
     public function show(User $user)
     {
-        return $this->userManager->getUserById($user);
+        return $this->users->findById($user);
     }
 
     public function update(User $user, UserData $userData)
     {
-        return $this->userManager->updateUser($user, $userData);
+        return $this->users->update($user, $userData);
     }
 
     public function destroy(User $user)
     {
-        return $this->userManager->deleteUser($user);
+        return $this->users->delete($user);
     }
 }

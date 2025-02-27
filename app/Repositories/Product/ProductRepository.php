@@ -5,7 +5,7 @@ namespace App\Repositories\Product;
 use App\Models\Product;
 use App\Data\ProductData;
 
-class ProductRepository implements ProductRepositoryInterface
+class ProductRepository
 {
     public function all()
     {
@@ -19,10 +19,10 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function create(ProductData $productData)
     {
-        // dd($productData->toArray());
         return Product::create($productData->toArray());
     }
-    public function update($id, ProductData $productData)
+
+    public function update(Product $id, ProductData $productData)
     {
         $product = Product::find($id);
         $product->update($productData->toArray());

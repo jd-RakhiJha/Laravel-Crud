@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Data\CategoryData;
 
 
-class CategoryRepository implements CategoryRepositoryInterface
+class CategoryRepository
 {
 
     public function all()
@@ -16,7 +16,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function findById($id)
     {
-        return Category::findOrFail($id);
+        return Category::find($id);
     }
 
     public function create(CategoryData $categoryData)

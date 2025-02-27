@@ -5,7 +5,7 @@ namespace App\Repositories\Orders;
 use App\Data\OrderData;
 use App\Models\Order;
 
-class OrdersRepository implements OrdersRepositoryInterface
+class OrdersRepository
 {
     public function all()
     {
@@ -22,7 +22,7 @@ class OrdersRepository implements OrdersRepositoryInterface
         return Order::create($orderData->toArray());
     }
 
-    public function update($id, OrderData $data)
+    public function update(Order $id, OrderData $data)
     {
         $order = Order::findOrFail($id);
         $order->update($data->toArray());

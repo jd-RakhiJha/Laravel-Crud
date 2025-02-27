@@ -25,7 +25,7 @@ class UsersRepository
     public function update($id,  $userData): User
     {
         $user = User::findOrFail($id);
-        $user->update($userData);
+        $user->update($userData->toArray());
         return $user;
     }
 

@@ -15,28 +15,23 @@ class ProductManager
         $this->productRepository = $productRepository;
     }
 
-    public function getAllProducts()
+    public function all()
     {
         return $this->productRepository->all();
     }
 
-    public function getProductById(Product $product)
-    {
-        return $this->productRepository->findById($product->id);
-    }
-
-    public function createProduct(ProductData $productData)
+    public function store(ProductData $productData)
     {
         return $this->productRepository->create($productData);
     }
 
-    public function updateProduct(Product $product, ProductData $productData)
+    public function update(Product $product, ProductData $productData)
     {
         return $this->productRepository->update($product->id, $productData);
     }
 
-    public function deleteProduct(Product $product)
+    public function delete($id)
     {
-        return $this->productRepository->delete($product->id);
+        return $this->productRepository->delete($id);
     }
 }

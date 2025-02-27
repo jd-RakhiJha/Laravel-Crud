@@ -20,22 +20,22 @@ class CategoryManager
         return $this->categories->all();
     }
 
-    public function getCategoryById(Category $category)
+    public function findById(Category $category)
     {
         return $this->categories->findById($category->id);
     }
 
-    public function createCategory(CategoryData $categoryData)
+    public function create(CategoryData $categoryData)
     {
         return $this->categories->create($categoryData);
     }
 
-    public function updateCategory(Category $category, CategoryData $categoryData)
+    public function update(Category $category, CategoryData $categoryData)
     {
         return $this->categories->update($category->id, $categoryData);
     }
 
-    public function deleteCategory(Category $category)
+    public function delete(Category $category)
     {
         return $this->categories->delete($category->id);
     }
