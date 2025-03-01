@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
@@ -36,3 +37,5 @@ Route::resource('payments', PaymentController::class);
 Route::get('/users/{user}/payments', [UserController::class, 'getUserPayments']);
 
 Route::post('/products/attach-categories', [ProductController::class, 'attachCategories']);
+
+Route::resource('employees', EmployeeController::class);
