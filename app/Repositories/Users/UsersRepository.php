@@ -38,4 +38,9 @@ class UsersRepository
     {
         return User::findOrFail($userId)->orders;
     }
+
+    public function getUserPayments($userId): Collection
+    {
+        return User::findOrFail($userId)->payments;
+    }
 }

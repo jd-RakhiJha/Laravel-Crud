@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Data\UserData;
 use App\Models\User;
+use App\Repositories\Payment\PaymentRepository;
 use App\Repositories\Users\UsersRepository;
 
 class UserController extends Controller
 {
     public function __construct(
-        private UsersRepository $users
+        private UsersRepository $users,
+        private PaymentRepository $payments
     ) {}
 
     public function index()
@@ -37,9 +39,8 @@ class UserController extends Controller
         return $this->users->delete($user);
     }
 
-    public function getUserOrders(User $user)
+    public function getUserPayments(User $user)
     {
-        $orders = $this->users->getUserOrders($user->id);
-        return $orders;
+        return $this->users->getUserPayments($user->id);
     }
 }

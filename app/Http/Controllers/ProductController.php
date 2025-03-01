@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Data\ProductData;
 use App\Models\Product;
-use App\Managers\ProductManager;
+use App\Data\ProductCategoryData;
 use App\Repositories\Product\ProductRepository;
 
 class ProductController extends Controller
@@ -36,5 +36,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         return $this->products->delete($id);
+    }
+
+    public function attachCategories(ProductCategoryData $data)
+    {
+        dd('hkdfhlkhglkf');
+        $product = $this->products->findById($data->product_id);
+        return $this->products->attachCategories($product, $data);
     }
 }

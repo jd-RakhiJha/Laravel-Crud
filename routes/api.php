@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -30,3 +31,8 @@ Route::resource('/users', UserController::class);
 Route::get('/users/{user}/orders', [UserController::class, 'getUserOrders'])->name('users.orders');
 
 Route::resource('orders', OrderController::class);
+
+Route::resource('payments', PaymentController::class);
+Route::get('/users/{user}/payments', [UserController::class, 'getUserPayments']);
+
+Route::post('/products/attach-categories', [ProductController::class, 'attachCategories']);

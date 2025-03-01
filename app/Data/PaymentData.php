@@ -3,20 +3,22 @@
 namespace App\Data;
 
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\Validation\Numeric;
 use Spatie\LaravelData\Attributes\Validation\StringType;
-use Spatie\LaravelData\Attributes\Validation\Exists;
+use Spatie\LaravelData\Attributes\Validation\IntegerType;
 
-class OrderData extends Data
+class PaymentData extends Data
 {
-    #[Required, IntegerType, Exists('users', 'id')]
+    #[Required, IntegerType]
     public int $user_id;
 
-    #[Required, StringType]
-    public string $order_number;
-
     #[Required, Numeric]
-    public float $total_price;
+    public float $amount;
+
+    #[Required, StringType]
+    public string $payment_method;
+
+    #[Required, StringType]
+    public string $status;
 }

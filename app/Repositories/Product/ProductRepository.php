@@ -4,17 +4,19 @@ namespace App\Repositories\Product;
 
 use App\Models\Product;
 use App\Data\ProductData;
+use App\Data\ProductCategoryData;
+
 
 class ProductRepository
 {
     public function all()
     {
-        return Product::all();
+        return Product::with('categories')->get();
     }
 
     public function findById($id)
     {
-        return Product::findOrFail($id);
+        return Product::with('categories')->findOrFail($id);
     }
 
     public function create(ProductData $productData)
@@ -31,5 +33,10 @@ class ProductRepository
     public function delete($id)
     {
         return Product::destroy($id);
+    }
+
+    public function attachCategories(Product $product, ProductCategoryData $data)
+    {
+        return $product->categories()->sync($data->category_ids);
     }
 }

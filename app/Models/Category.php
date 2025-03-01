@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 use Spatie\LaravelData\WithData;
 
 class Category extends Model
@@ -16,4 +18,14 @@ class Category extends Model
         'name',
         'type'
     ];
+
+    protected $casts = [
+        'name' => 'string',
+        'type' => 'string',
+    ];
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'category_product');
+    }
 }
