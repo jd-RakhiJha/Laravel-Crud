@@ -39,3 +39,4 @@ Route::get('/users/{user}/payments', [UserController::class, 'getUserPayments'])
 Route::post('/products/attach-categories', [ProductController::class, 'attachCategories']);
 
 Route::resource('employees', EmployeeController::class);
+Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
