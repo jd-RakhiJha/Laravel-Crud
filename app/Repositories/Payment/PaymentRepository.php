@@ -15,7 +15,7 @@ class PaymentRepository
 
     public function findById($id)
     {
-        return Payment::findOrFail($id);
+        return Payment::find($id);
     }
 
     public function create(PaymentData $paymentData)

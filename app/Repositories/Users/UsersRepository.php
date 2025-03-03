@@ -34,13 +34,13 @@ class UsersRepository
         return User::destroy($id);
     }
 
-    public function getUserOrders($userId): Collection
+    public function getUserWithOrders($userId)
     {
-        return User::findOrFail($userId)->orders;
+        return User::with('orders')->find($userId);
     }
 
-    public function getUserPayments($userId): Collection
-    {
-        return User::findOrFail($userId)->payments;
-    }
+    // public function getUserPayments($userId): Collection
+    // {
+    //     return User::findOrFail($userId)->payments;
+    // }
 }

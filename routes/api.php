@@ -30,12 +30,11 @@ Route::resource('products', ProductController::class)->only(['index', 'store', '
 Route::Resource('category', CategoryController::class);
 
 Route::resource('/users', UserController::class);
-Route::get('/users/{user}/orders', [UserController::class, 'getUserOrders'])->name('users.orders');
+Route::get('/users/{user}/orders', [UserController::class, 'getUserWithOrders']);
 
 Route::resource('orders', OrderController::class);
 
-Route::resource('payments', PaymentController::class);
-Route::get('/users/{user}/payments', [UserController::class, 'getUserPayments']);
+Route::Resource('payments', PaymentController::class);
 
 Route::post('/products/attach-categories', [ProductController::class, 'attachCategories']);
 

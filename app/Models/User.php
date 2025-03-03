@@ -25,11 +25,11 @@ class User extends Model
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'user_id');
     }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class, 'user_id');
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany(Payment::class, 'user_id');
+    // }
 }

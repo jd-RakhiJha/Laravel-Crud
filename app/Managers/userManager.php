@@ -6,10 +6,15 @@ use App\Repositories\Users\UsersRepository;
 
 class UserManager
 {
-    protected UsersRepository $users;
+    public function __construct(protected UsersRepository $users) {}
 
-    public function __construct()
+    public function getAllUsers()
     {
-        $this->users =  new UsersRepository;
+        return $this->users->all();
+    }
+
+    public function getUserWithOrders($userId)
+    {
+        return $this->users->getUserWithOrders($userId);
     }
 }

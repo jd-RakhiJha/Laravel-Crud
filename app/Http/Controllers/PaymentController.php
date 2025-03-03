@@ -10,8 +10,6 @@ use App\Models\User;
 
 class PaymentController extends Controller
 {
-
-
     public function __construct(private PaymentRepository $payments) {}
 
     public function index()

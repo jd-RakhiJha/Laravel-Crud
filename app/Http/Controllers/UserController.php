@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Data\UserData;
+use App\Managers\UserManager;
 use App\Models\User;
-use App\Repositories\Payment\PaymentRepository;
 use App\Repositories\Users\UsersRepository;
 
 class UserController extends Controller
 {
     public function __construct(
         private UsersRepository $users,
-        private PaymentRepository $payments
+        private UserManager $userManager
     ) {}
 
     public function index()
     {
-        return UserData::collect($this->users->all());
+        return $this->userManager->getAllUsers();
     }
 
     public function store(UserData $userData)
@@ -39,8 +39,13 @@ class UserController extends Controller
         return $this->users->delete($user);
     }
 
-    public function getUserPayments(User $user)
+    public function getUserWithOrders(User $user)
     {
-        return $this->users->getUserPayments($user->id);
+        return $this->userManager->getUserWithOrders($user->id);
     }
+
+    // public function getUserPayments(User $user)
+    // {
+    //     return $this->users->getUserPayments($user->id);
+    // }
 }
