@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Data\PostData;
 use App\Models\Post;
+use App\Managers\PostManager;
 use App\Repositories\Post\PostRepository;
 
 class PostController extends Controller
 {
     public function __construct(
-        private PostRepository $posts
+        private PostRepository $posts,
+        private PostManager $postManager
     ) {}
 
     public function index()
@@ -35,5 +37,10 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         return $this->posts->delete($post->id);
+    }
+
+    public function getUserPosts($userId)
+    {
+        return $this->postManager->getUserPosts($userId);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\LaravelData\WithData;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Model
 {
@@ -32,4 +33,9 @@ class User extends Model
     // {
     //     return $this->hasMany(Payment::class, 'user_id');
     // }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_user');
+    }
 }

@@ -18,4 +18,9 @@ class Post extends Model
     protected $casts = [
         'content' => 'string',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'post_user');
+    }
 }

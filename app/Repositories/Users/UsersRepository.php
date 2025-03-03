@@ -43,4 +43,5 @@ class UsersRepository
     // {
     //     return User::findOrFail($userId)->payments;
     // }
+
 }

@@ -33,4 +33,9 @@ class PostRepository
     {
         return Post::destroy($id);
     }
+
+    public function getPostsByUser($userId)
+    {
+        return Post::where('user_id', $userId)->get();
+    }
 }
