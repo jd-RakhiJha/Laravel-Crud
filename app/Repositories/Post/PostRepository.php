@@ -19,7 +19,11 @@ class PostRepository
 
     public function create(PostData $postData)
     {
-        return Post::create($postData->toArray());
+        // Attach multiple users (array of user IDs)
+        $post = Post::create($postData->toArray());
+        $post->users()->attach(1);
+
+        return $post;
     }
 
     public function update(Post $post, PostData $postData)

@@ -46,3 +46,4 @@ Route::resource('students', StudentController::class);
 Route::get('students/{students}', [StudentController::class, 'show']);
 
 Route::resource('posts', PostController::class);
+Route::get('users/{user}/posts', [PostController::class, 'getUserPosts']);

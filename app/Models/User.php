@@ -34,8 +34,8 @@ class User extends Model
     //     return $this->hasMany(Payment::class, 'user_id');
     // }
 
-    public function posts()
+    public function posts(): HasMany
     {
-        return $this->belongsToMany(Post::class, 'post_user');
+        return $this->hasMany(Post::class);
     }
 }

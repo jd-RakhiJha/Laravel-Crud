@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Htpp\Controllers\StudentController;
+use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
