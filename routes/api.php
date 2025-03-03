@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -43,3 +44,5 @@ Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
 
 Route::resource('students', StudentController::class);
 Route::get('students/{students}', [StudentController::class, 'show']);
+
+Route::resource('posts', PostController::class);
