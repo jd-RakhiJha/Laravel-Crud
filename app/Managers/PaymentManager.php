@@ -4,7 +4,6 @@ namespace App\Managers;
 
 use App\Repositories\Payment\PaymentRepository;
 
-
 class PaymentManager
 {
     protected PaymentRepository $payments;

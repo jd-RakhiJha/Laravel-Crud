@@ -10,12 +10,9 @@ use App\Models\User;
 
 class PaymentController extends Controller
 {
-    private PaymentRepository $payments;
 
-    public function __construct(PaymentRepository $payments)
-    {
-        $this->payments = $payments;
-    }
+
+    public function __construct(private PaymentRepository $payments) {}
 
     public function index()
     {

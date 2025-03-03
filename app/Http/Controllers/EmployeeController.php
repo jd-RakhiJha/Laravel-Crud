@@ -8,12 +8,8 @@ use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
-    private EmployeeRepository $employees;
 
-    public function __construct(EmployeeRepository $employees)
-    {
-        $this->employees = $employees;
-    }
+    public function __construct(private EmployeeRepository $employees) {}
 
     public function index()
     {
