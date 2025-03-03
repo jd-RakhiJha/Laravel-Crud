@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\HTTP\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::post('/products/attach-categories', [ProductController::class, 'attachCat
 
 Route::resource('employees', EmployeeController::class);
 Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
+
+Route::resource('students', StudentController::class);
+Route::get('students/{students}', [StudentController::class, 'show']);
