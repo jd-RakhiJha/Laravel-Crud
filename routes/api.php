@@ -30,7 +30,7 @@ Route::resource('products', ProductController::class);
 
 Route::resource('users', UserController::class);
 
-Route::Resource('category', CategoryController::class);
+Route::Resource('categories', CategoryController::class);
 
 Route::resource('orders', OrderController::class);
 

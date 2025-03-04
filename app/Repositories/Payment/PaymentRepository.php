@@ -13,7 +13,7 @@ class PaymentRepository
         return Payment::all();
     }
 
-    public function findById($id): ?Payment
+    public function findById(int $id): ?Payment
     {
         return Payment::find($id);
     }

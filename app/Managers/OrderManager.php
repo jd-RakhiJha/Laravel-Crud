@@ -2,16 +2,16 @@
 
 namespace App\Managers;
 
-use App\Repositories\Orders\OrdersRepository;
+use App\Repositories\Order\OrderRepository;
 use App\Data\OrderData;
 use App\Models\Order;
 
 class OrderManager
 {
-    protected OrdersRepository $orders;
+    protected OrderRepository $orders;
 
     public function __construct()
     {
-        $this->orders = new OrdersRepository;
+        $this->orders = new OrderRepository;
     }
 }

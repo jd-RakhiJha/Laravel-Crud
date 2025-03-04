@@ -13,7 +13,7 @@ class OrderRepository
         return Order::all();
     }
 
-    public function findById($id): ?Order
+    public function findById(int $id): ?Order
     {
         return Order::find($id);
     }

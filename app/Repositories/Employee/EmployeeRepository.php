@@ -13,7 +13,7 @@ class EmployeeRepository
         return Employee::all();
     }
 
-    public function findById($id): ?Employee
+    public function findById(int $id): ?Employee
     {
         return Employee::find($id);
     }

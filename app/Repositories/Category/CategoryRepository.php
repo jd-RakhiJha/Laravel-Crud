@@ -14,7 +14,7 @@ class CategoryRepository
         return Category::all();
     }
 
-    public function findById($id): ?Category
+    public function findById(int $id): ?Category
     {
         return Category::find($id);
     }

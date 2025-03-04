@@ -13,7 +13,7 @@ class PostRepository
         return Post::all();
     }
 
-    public function findById($id): ?Post
+    public function findById(int $id): ?Post
     {
         return Post::find($id);
     }

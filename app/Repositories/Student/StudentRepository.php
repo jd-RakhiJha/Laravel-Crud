@@ -14,7 +14,7 @@ class StudentRepository
         return Student::all();
     }
 
-    public function findById($id): ?Student
+    public function findById(int $id): ?Student
     {
         return Student::find($id);
     }
@@ -27,7 +27,6 @@ class StudentRepository
     public function update(Student $student, StudentData $studentData): Student
     {
         $student->update($studentData->toArray());
-
         return $student;
     }
 

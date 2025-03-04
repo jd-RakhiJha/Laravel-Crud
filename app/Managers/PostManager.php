@@ -6,8 +6,10 @@ use App\Repositories\Post\PostRepository;
 
 class PostManager
 {
-    public function __construct(protected PostRepository $posts)
+    protected PostRepository $posts;
+
+    public function __construct()
     {
-        $this->posts = $posts;
+        $this->posts = new PostRepository();
     }
 }
