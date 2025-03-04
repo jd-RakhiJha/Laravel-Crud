@@ -22,10 +22,11 @@ class CategoryController extends Controller
         return $this->categories->create($categoriesData);
     }
 
-    public function show(Category $categories)
+    public function show(Category $category)
     {
-        return $this->categories->findById($categories->id);
+        return $this->categories->findById($category->id);
     }
+
 
     public function update(Category $categories, CategoryData $categoriesData)
     {

@@ -2,32 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Repositories\Users\UserRepository; // Ensure correct namespace
-use App\Repositories\Users\UsersRepository;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Contact;
 
 class UserSeeder extends Seeder
 {
-    private UsersRepository $users;
-
-    /**
-     * Inject UserRepository dependency
-     */
-    public function __construct(UsersRepository $users)
-    {
-        $this->users = $users;
-    }
-
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        for ($i = 0; $i < 10; $i++) {
-            $this->users->create([
-                'name' => fake()->name(),
-                'email' => fake()->unique()->safeEmail(),
-            ]);
-        }
+        // $admin = User::factory()->create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@gmail.com',
+        // ]);
+
+        // // Create a contact for the admin user
+        // Contact::factory()->create([
+        //     'user_id' => $admin->id,
+        //     'email' => 'rakhi@gmail.com',
+        //     'phone' => '123456789',
+        //     'address' => '123 Main Street',
+        // ]);
+
+        // Generate 10 random users with contacts
+        User::factory()
+            ->has(Contact::factory())
+            ->count(10)
+            ->create();
     }
 }

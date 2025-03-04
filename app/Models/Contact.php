@@ -6,24 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\LaravelData\WithData;
 
-class User extends Model
+class Contact extends Model
 {
     use HasFactory, WithData;
 
-    protected $table = 'users';
-
     protected $fillable = [
-        'name',
-        'email'
+        'email',
+        'phone',
+        'address',
+        'user_id',
     ];
 
     protected $casts = [
         'email' => 'string',
-        'name'  => 'string',
+        'phone' => 'string',
+        'address' => 'string',
+        'user_id' => 'int',
     ];
 
-    public function contacts()
+
+    public function user()
     {
-        return $this->hasOne(Contact::class);
+        return $this->belongsTo(User::class);
     }
 }

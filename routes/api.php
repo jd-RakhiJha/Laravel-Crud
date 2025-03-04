@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -41,3 +42,5 @@ Route::resource('employees', EmployeeController::class);
 Route::resource('posts', PostController::class);
 
 Route::resource('students', StudentController::class);
+
+Route::resource('contacts', ContactController::class);
