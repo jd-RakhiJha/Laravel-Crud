@@ -24,12 +24,12 @@ class CategoryController extends Controller
 
     public function show(Category $categories)
     {
-        return $this->categories->findById($categories);
+        return $this->categories->findById($categories->id);
     }
 
-    public function update(Category $id, CategoryData $categoriesData)
+    public function update(Category $categories, CategoryData $categoriesData)
     {
-        return $this->categories->update($id, $categoriesData);
+        return $this->categories->update($categories, $categoriesData);
     }
 
     public function destroy(Category $categories)

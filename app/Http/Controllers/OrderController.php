@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Data\OrderData;
 use App\Models\Order;
-use App\Repositories\Orders\OrdersRepository;
+use App\Repositories\Order\OrderRepository;
+
 
 class OrderController extends Controller
 {
     public function __construct(
-        private OrdersRepository $orders
+        private OrderRepository $orders
     ) {}
 
     public function index()
@@ -19,7 +20,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        return $this->orders->findById($order);
+        return $this->orders->findById($order->id);
     }
 
     public function store(OrderData $orderData)
@@ -29,12 +30,11 @@ class OrderController extends Controller
 
     public function update(Order $order, OrderData $orderData)
     {
-        $order = $this->orders->findById($order->id);
         return $this->orders->update($order, $orderData);
     }
 
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        return $this->orders->delete($id);
+        return $this->orders->delete($order);
     }
 }

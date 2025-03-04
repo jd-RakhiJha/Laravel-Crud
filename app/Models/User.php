@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\LaravelData\WithData;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Model
 {
@@ -23,19 +21,4 @@ class User extends Model
         'email' => 'string',
         'name'  => 'string',
     ];
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class, 'user_id');
-    }
-
-    // public function payments()
-    // {
-    //     return $this->hasMany(Payment::class, 'user_id');
-    // }
-
-    public function posts(): HasMany
-    {
-        return $this->hasMany(Post::class);
-    }
 }

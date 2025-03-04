@@ -3,40 +3,35 @@
 namespace App\Repositories\Product;
 
 use App\Models\Product;
+use Illuminate\Support\Collection;
 use App\Data\ProductData;
-use App\Data\ProductCategoryData;
 
 
 class ProductRepository
 {
-    public function all()
+    public function all(): Collection
     {
-        return Product::with('categories')->get();
+        return Product::all();
     }
 
-    public function findById($id)
+    public function findById($id): ?Product
     {
-        return Product::with('categories')->findOrFail($id);
+        return Product::find($id);
     }
 
-    public function create(ProductData $productData)
+    public function create(ProductData $productData): Product
     {
         return Product::create($productData->toArray());
     }
 
-    public function update(Product $product, ProductData $productData)
+    public function update(Product $product, ProductData $productData): Product
     {
         $product->update($productData->toArray());
         return $product;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         return Product::destroy($id);
-    }
-
-    public function attachCategories(Product $product, ProductCategoryData $data)
-    {
-        return $product->categories()->sync($data->category_ids);
     }
 }

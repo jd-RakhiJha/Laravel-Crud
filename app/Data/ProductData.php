@@ -19,7 +19,4 @@ class ProductData extends Data
 
   #[StringType]
   public ?string $description = null;
-
-  #[Required, IntegerType, Exists('users', 'id')]
-  public int $user_id;
 }

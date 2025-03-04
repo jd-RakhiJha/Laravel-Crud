@@ -2,19 +2,14 @@
 
 namespace App\Managers;
 
-use App\Repositories\Users\UsersRepository;
+use App\Repositories\User\UserRepository;
 
 class UserManager
 {
-    public function __construct(protected UsersRepository $users) {}
+    protected UserRepository $users;
 
-    public function getAllUsers()
+    public function __construct()
     {
-        return $this->users->all();
-    }
-
-    public function getUserWithOrders($userId)
-    {
-        return $this->users->getUserWithOrders($userId);
+        $this->users = new UserRepository;
     }
 }

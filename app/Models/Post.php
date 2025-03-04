@@ -13,15 +13,9 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'user_id'
     ];
 
     protected $casts = [
         'content' => 'string',
     ];
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'post_user');
-    }
 }

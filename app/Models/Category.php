@@ -23,9 +23,4 @@ class Category extends Model
         'name' => 'string',
         'type' => 'string',
     ];
-
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class, 'category_product');
-    }
 }

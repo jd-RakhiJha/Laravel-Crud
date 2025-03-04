@@ -10,8 +10,6 @@ use Spatie\LaravelData\Attributes\Validation\IntegerType;
 
 class PaymentData extends Data
 {
-    #[Required, IntegerType]
-    public int $user_id;
 
     #[Required, Numeric]
     public float $amount;

@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Data\UserData;
-use App\Managers\UserManager;
 use App\Models\User;
-use App\Repositories\Users\UsersRepository;
+use App\Repositories\User\UserRepository;
 
 class UserController extends Controller
 {
     public function __construct(
-        private UsersRepository $users,
-        private UserManager $userManager
+        private UserRepository $users
     ) {}
 
     public function index()
     {
-        return $this->userManager->getAllUsers();
+        return UserData::collect($this->users->all());
     }
 
     public function store(UserData $userData)
@@ -26,7 +24,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return $this->users->findById($user);
+        return $this->users->findById($user->id);
     }
 
     public function update(User $user, UserData $userData)
@@ -38,14 +36,4 @@ class UserController extends Controller
     {
         return $this->users->delete($user);
     }
-
-    public function getUserWithOrders(User $user)
-    {
-        return $this->userManager->getUserWithOrders($user->id);
-    }
-
-    // public function getUserPayments(User $user)
-    // {
-    //     return $this->users->getUserPayments($user->id);
-    // }
 }

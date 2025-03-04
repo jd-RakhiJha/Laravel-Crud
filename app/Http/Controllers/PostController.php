@@ -10,8 +10,7 @@ use App\Repositories\Post\PostRepository;
 class PostController extends Controller
 {
     public function __construct(
-        private PostRepository $posts,
-        private PostManager $postManager
+        private PostRepository $posts
     ) {}
 
     public function index()
@@ -36,11 +35,6 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        return $this->posts->delete($post->id);
-    }
-
-    public function getUserPosts($userId)
-    {
-        return $this->postManager->getUserPosts($userId);
+        return $this->posts->delete($post);
     }
 }

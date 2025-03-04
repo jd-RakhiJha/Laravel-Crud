@@ -1,34 +1,35 @@
 <?php
 
-namespace App\Repositories\Orders;
+namespace App\Repositories\Order;
 
 use App\Data\OrderData;
 use App\Models\Order;
+use Illuminate\Support\Collection;
 
-class OrdersRepository
+class OrderRepository
 {
-    public function all()
+    public function all(): Collection
     {
         return Order::all();
     }
 
-    public function findById($id)
+    public function findById($id): ?Order
     {
         return Order::find($id);
     }
 
-    public function create(OrderData $orderData)
+    public function create(OrderData $orderData): Order
     {
         return Order::create($orderData->toArray());
     }
 
-    public function update(Order $order, OrderData $data)
+    public function update(Order $order, OrderData $data): Order
     {
         $order->update($data->toArray());
         return $order;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         return Order::destroy($id);
     }

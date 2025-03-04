@@ -4,32 +4,32 @@ namespace App\Repositories\Employee;
 
 use App\Models\Employee;
 use  App\Data\EmployeeData;
+use Illuminate\Support\Collection;
 
 class EmployeeRepository
 {
-    public function all()
+    public function all(): Collection
     {
         return Employee::all();
     }
 
-    public function findById($id)
+    public function findById($id): ?Employee
     {
-        return Employee::findOrFail($id);
+        return Employee::find($id);
     }
 
-    public function create(EmployeeData $employeeData)
+    public function create(EmployeeData $employeeData): Employee
     {
         return Employee::create($employeeData->toArray());
-        return $employee->toArray();
     }
 
-    public function update(Employee $employee, EmployeeData $data)
+    public function update(Employee $employee, EmployeeData $data): Employee
     {
         $employee->update($data->toArray());
         return $employee;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         return Employee::destroy($id);
     }

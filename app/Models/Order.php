@@ -12,19 +12,12 @@ class Order extends Model
     use HasFactory, WithData;
 
     protected $fillable = [
-        'user_id',
         'order_number',
         'total_price'
     ];
 
     protected $casts = [
-        'user_id'       => 'integer',
         'order_number'  => 'string',
         'total_price'   => 'decimal:2',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

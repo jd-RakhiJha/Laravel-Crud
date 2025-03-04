@@ -10,9 +10,4 @@ class PostManager
     {
         $this->posts = $posts;
     }
-
-    public function getUserPosts($userId)
-    {
-        return $this->posts->getPostsByUser($userId);
-    }
 }

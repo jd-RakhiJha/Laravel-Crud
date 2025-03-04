@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Data\PaymentData;
 use App\Models\Payment;
 use App\Repositories\Payment\PaymentRepository;
-use App\Models\User;
 
 
 class PaymentController extends Controller
@@ -14,7 +13,7 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return $this->payments->all();
+        return PaymentData::collect($this->payments->all());
     }
 
     public function show(Payment $payment)
@@ -34,12 +33,6 @@ class PaymentController extends Controller
 
     public function destroy(Payment $payment)
     {
-        return $this->payments->delete($payment->id);
-    }
-
-    public function getUserPayments(User $user, Payment $payments)
-    {
-        $payments = $payments->getUserPayments($user->id);
-        return $payments;
+        return $this->payments->delete($payment);
     }
 }

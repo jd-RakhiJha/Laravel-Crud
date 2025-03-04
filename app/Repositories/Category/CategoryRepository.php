@@ -4,40 +4,34 @@ namespace App\Repositories\Category;
 
 use App\Models\Category;
 use App\Data\CategoryData;
-
+use Illuminate\Support\Collection;
 
 class CategoryRepository
 {
 
-    public function all()
+    public function all(): Collection
     {
-        return Category::with('products')->get();
+        return Category::all();
     }
 
-    public function findById($id)
+    public function findById($id): ?Category
     {
-        return Category::with('products')->findOrFail($id);
+        return Category::find($id);
     }
 
-    public function create(CategoryData $categoryData)
+    public function create(CategoryData $categoryData): Category
     {
         return Category::create($categoryData->toArray());
     }
 
-    public function update($id, CategoryData $categoryData)
+    public function update(Category $category, CategoryData $categoryData): Category
     {
-        $category = Category::findOrFail($id);
         $category->update($categoryData->toArray());
         return $category;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         return Category::destroy($id);
-    }
-
-    public function attachProducts(Category $category, array $productIds)
-    {
-        return $category->products()->sync($productIds);
     }
 }

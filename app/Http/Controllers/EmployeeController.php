@@ -8,8 +8,9 @@ use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
-
-    public function __construct(private EmployeeRepository $employees) {}
+    public function __construct(
+        private EmployeeRepository $employees
+    ) {}
 
     public function index()
     {
@@ -28,11 +29,11 @@ class EmployeeController extends Controller
 
     public function update(Employee $employee, EmployeeData $employeeData)
     {
-        return $this->employees->update($employee->id, $employeeData);
+        return $this->employees->update($employee, $employeeData);
     }
 
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        return $this->employees->delete($id);
+        return $this->employees->delete($employee);
     }
 }

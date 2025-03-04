@@ -17,7 +17,4 @@ class PostData extends Data
 
     #[Required, StringType]
     public string $content;
-
-    #[Required, Numeric]
-    public string $user_id;
 }

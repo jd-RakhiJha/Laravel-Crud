@@ -11,9 +11,6 @@ use Spatie\LaravelData\Attributes\Validation\Exists;
 
 class OrderData extends Data
 {
-    #[Required, IntegerType, Exists('users', 'id')]
-    public int $user_id;
-
     #[Required, StringType]
     public string $order_number;
 

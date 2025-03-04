@@ -26,24 +26,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products', ProductController::class)->only(['index', 'store', 'update', 'destroy']);
+Route::resource('products', ProductController::class);
+
+Route::resource('users', UserController::class);
 
 Route::Resource('category', CategoryController::class);
-
-Route::resource('/users', UserController::class);
-Route::get('/users/{user}/orders', [UserController::class, 'getUserWithOrders']);
 
 Route::resource('orders', OrderController::class);
 
 Route::Resource('payments', PaymentController::class);
 
-Route::post('/products/attach-categories', [ProductController::class, 'attachCategories']);
-
 Route::resource('employees', EmployeeController::class);
-Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
-
-Route::resource('students', StudentController::class);
-Route::get('students/{students}', [StudentController::class, 'show']);
 
 Route::resource('posts', PostController::class);
-Route::get('users/{user}/posts', [PostController::class, 'getUserPosts']);
+
+Route::resource('students', StudentController::class);

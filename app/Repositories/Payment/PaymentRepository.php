@@ -8,28 +8,28 @@ use Illuminate\Support\Collection;
 
 class PaymentRepository
 {
-    public function all()
+    public function all(): Collection
     {
         return Payment::all();
     }
 
-    public function findById($id)
+    public function findById($id): ?Payment
     {
         return Payment::find($id);
     }
 
-    public function create(PaymentData $paymentData)
+    public function create(PaymentData $paymentData): Payment
     {
         return Payment::create($paymentData->toArray());
     }
 
-    public function update(Payment $payment, PaymentData $paymentData)
+    public function update(Payment $payment, PaymentData $paymentData): Payment
     {
         $payment->update($paymentData->toArray());
         return $payment;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         return Payment::destroy($id);
     }
