@@ -19,17 +19,13 @@ class PostRepository
 
     public function create(PostData $postData)
     {
-        // Attach multiple users (array of user IDs)
         $post = Post::create($postData->toArray());
-        $post->users()->attach(1);
-
-        return $post;
+        return $post->toArray();
     }
 
     public function update(Post $post, PostData $postData)
     {
         $post->update($postData->toArray());
-
         return $post;
     }
 
@@ -38,7 +34,7 @@ class PostRepository
         return Post::destroy($id);
     }
 
-    public function getPostsByUser($userId)
+    public function getPostsByUser(int $userId)
     {
         return Post::where('user_id', $userId)->get();
     }

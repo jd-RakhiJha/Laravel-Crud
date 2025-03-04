@@ -14,7 +14,7 @@ class OrdersRepository
 
     public function findById($id)
     {
-        return Order::findOrFail($id);
+        return Order::find($id);
     }
 
     public function create(OrderData $orderData)
