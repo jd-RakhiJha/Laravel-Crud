@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Data\UserData;
+use App\Managers\UserManager;
 use App\Models\User;
 use App\Repositories\User\UserRepository;
 
 class UserController extends Controller
 {
     public function __construct(
-        private UserRepository $users
+        private UserRepository $users,
+        private UserManager  $userManager
     ) {}
 
     public function index()
@@ -22,9 +24,9 @@ class UserController extends Controller
         return $this->users->create($userData);
     }
 
-    public function show(User $user)
+    public function show($id)
     {
-        return $this->users->findById($user->id);
+        return $this->userManager->getUserById($id);
     }
 
     public function update(User $user, UserData $userData)
@@ -35,5 +37,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         return $this->users->delete($user);
+    }
+
+    public function checkUserContacts($userId)
+    {
+        return $this->userManager->checkUserContacts($userId);
     }
 }

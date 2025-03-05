@@ -14,22 +14,21 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // $admin = User::factory()->create([
-        //     'name' => 'admin',
-        //     'email' => 'admin@gmail.com',
-        // ]);
+        $admin = User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+        ]);
 
-        // // Create a contact for the admin user
-        // Contact::factory()->create([
-        //     'user_id' => $admin->id,
-        //     'email' => 'rakhi@gmail.com',
-        //     'phone' => '123456789',
-        //     'address' => '123 Main Street',
-        // ]);
+        Contact::factory()->create([
+            'user_id' => $admin->id,
+            'email' => 'ashish@gmail.com',
+            'phone' => '123456789',
+            'address' => '123 Main Street',
+        ]);
 
         // Generate 10 random users with contacts
         User::factory()
-            ->has(Contact::factory())
+            ->has(Contact::factory()->count(1)) // Each user will have 1 contact
             ->count(10)
             ->create();
     }

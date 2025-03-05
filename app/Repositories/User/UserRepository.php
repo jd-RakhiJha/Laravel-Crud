@@ -6,6 +6,7 @@ use App\Data\UserData;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
+
 class UserRepository
 {
     public function all(): Collection
@@ -13,7 +14,7 @@ class UserRepository
         return User::all();
     }
 
-    public function findById(int $id): ?User
+    public function find(int $id): User
     {
         return User::find($id);
     }
@@ -32,5 +33,10 @@ class UserRepository
     public function delete($id): bool
     {
         return User::destroy($id);
+    }
+
+    public function getUsersWithContacts(): Collection
+    {
+        return User::with('contact')->get();
     }
 }
