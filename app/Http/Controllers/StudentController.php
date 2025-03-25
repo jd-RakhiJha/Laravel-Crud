@@ -2,38 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Data\StudentData;
-use App\Models\Student;
+use App\Http\Requests\StudentRequest;
 use App\Repositories\Student\StudentRepository;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class StudentController extends Controller
 {
-    public function __construct(
-        private StudentRepository $students
-    ) {}
+    public function __construct(protected StudentRepository $students) {}
 
-    public function index()
+    public function index(): Response
     {
-        return StudentData::collect($this->students->all());
+        return Inertia::render('Students/Index', [
+            'students' => $this->studentRepository->all()
+        ]);
     }
 
-    public function store(StudentData $studentData)
+    public function store(StudentRequest $request)
     {
-        return $this->students->create($studentData);
+        $this->studentRepository->create($request->validated());
+        return redirect()->back();
     }
 
-    public function show(Student $student)
+    public function update(StudentRequest $request, $id)
     {
-        return $this->students->findById($student->id);
+        $this->studentRepository->update($id, $request->validated());
+        return redirect()->back();
     }
 
-    public function update(Student $student, StudentData $studentData)
+    public function destroy($id)
     {
-        return $this->students->update($student, $studentData);
-    }
-
-    public function destroy(Student $student)
-    {
-        return $this->students->delete($student);
+        $this->studentRepository->delete($id);
+        return redirect()->back();
     }
 }
