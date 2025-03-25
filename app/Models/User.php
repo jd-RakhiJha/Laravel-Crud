@@ -19,12 +19,14 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
-        'email'
+        'email',
+        'password'
     ];
 
     protected $casts = [
         'email' => 'string',
         'name'  => 'string',
+        'password'=>'string',
     ];
 
     public function contacts(): HasMany

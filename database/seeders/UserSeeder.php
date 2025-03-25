@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Hash; // Add this line
 
 class UserSeeder extends Seeder
 {
@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         $admin = User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin123'), // Hash the password correctly
         ]);
 
         Contact::factory()->create([
