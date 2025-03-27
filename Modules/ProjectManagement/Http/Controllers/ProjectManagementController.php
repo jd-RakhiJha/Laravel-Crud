@@ -2,78 +2,41 @@
 
 namespace Modules\ProjectManagement\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use App\Repositories\ProjectManagementRepository;
+use Modules\ProjectManagement\Data\ProjectData;
+use Modules\ProjectManagement\Entities\Project;
+use Modules\ProjectManagement\Repositories\ProjecrtManagementRepository;
 use Illuminate\Routing\Controller;
+use Modules\ProjectManagement\Data\ProjectManagementData;
 
-class ProjectManagementController extends Controller
+class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    public function __construct(
+        private ProjectManagementRepository $projects
+    ) {}
+
     public function index()
     {
-        return view('projectmanagement::index');
+        return ProjectManagementData::collect($this->projects->all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function store(ProjectData $projectData)
     {
-        return view('projectmanagement::create');
+        return $this->projects->create($projectData);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function show(Project $project)
     {
-        //
+        return $this->projects->findById($project->id);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function update(Project $project, ProjectData $projectData)
     {
-        return view('projectmanagement::show');
+        return $this->projects->update($project, $projectData);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
+    public function destroy(Project $project)
     {
-        return view('projectmanagement::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->projects->delete($project);
     }
 }
