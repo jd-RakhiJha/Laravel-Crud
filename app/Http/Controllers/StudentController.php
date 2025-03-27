@@ -14,25 +14,25 @@ class StudentController extends Controller
     public function index(): Response
     {
         return Inertia::render('Students/Index', [
-            'students' => $this->studentRepository->all()
+            'students' => $this->students->all()
         ]);
     }
 
     public function store(StudentRequest $request)
     {
-        $this->studentRepository->create($request->validated());
+        $this->students->create($request->validated());
         return redirect()->back();
     }
 
     public function update(StudentRequest $request, $id)
     {
-        $this->studentRepository->update($id, $request->validated());
+        $this->students->update($id, $request->validated());
         return redirect()->back();
     }
 
     public function destroy($id)
     {
-        $this->studentRepository->delete($id);
+        $this->students->delete($id);
         return redirect()->back();
     }
 }
