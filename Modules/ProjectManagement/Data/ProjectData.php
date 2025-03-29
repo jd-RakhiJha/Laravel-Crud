@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\ProjectManagement\Data;
+namespace Modules\Project\Data;
 
 
-class ProjectManagementData
+class ProjectData
 {
     public string $name;
     public string $description;
