@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\Product\ProductRepository;
+use App\Repositories\Modules\ProjectManagementRepository;
 use App\Repositories\Product\ProductRepositoryInterface;
 
 

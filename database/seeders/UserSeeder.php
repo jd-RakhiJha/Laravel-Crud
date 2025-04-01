@@ -22,15 +22,15 @@ class UserSeeder extends Seeder
 
         Contact::factory()->create([
             'user_id' => $admin->id,
-            'email' => 'ashish@gmail.com',
+            'email' => 'rakhi@gmail.com',
             'phone' => '123456789',
             'address' => '123 Main Street',
         ]);
 
-        // Generate 10 random users with contacts
-        User::factory()
-            ->has(Contact::factory()->count(1)) // Each user will have 1 contact
-            ->count(10)
-            ->create();
+        // // Generate 10 random users with contacts
+        // User::factory()
+        //     ->has(Contact::factory()->count(1)) // Each user will have 1 contact
+        //     ->count(10)
+        //     ->create();
     }
 }

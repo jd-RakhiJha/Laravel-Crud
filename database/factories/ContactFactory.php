@@ -20,7 +20,7 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Automatically associate with a user
+            'user_id' => User::factory(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
