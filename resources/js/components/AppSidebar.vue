@@ -1,6 +1,4 @@
 <script setup>
-import SearchForm from '@/registry/new-york/block/Sidebar01/components/SearchForm.vue';
-import VersionSwitcher from '@/registry/new-york/block/Sidebar01/components/VersionSwitcher.vue';
 
 import {
   Sidebar,
@@ -14,6 +12,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from '@/components/ui/sidebar';
+import SearchForm from './SearchForm.vue';
+import VersionSwitcher from './VersionSwitcher.vue';
 
 const props = defineProps({
   side: { type: String, required: false },

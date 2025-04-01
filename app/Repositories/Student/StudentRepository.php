@@ -11,7 +11,7 @@ class StudentRepository
 
     public function all(): Collection
     {
-        return Student::all();
+        return Student::filter()->get();
     }
 
     public function findById(int $id): ?Student

@@ -43,4 +43,6 @@ Route::resource('posts', PostController::class);
 
 Route::resource('contacts', ContactController::class);
 
+Route::resource('students', StudentController::class);
+
 Route::get('/users/{userId}/contacts', [UserController::class, 'checkUserContacts']);

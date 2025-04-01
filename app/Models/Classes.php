@@ -26,8 +26,4 @@ class Classes extends Model
         'end_date' => 'datetime',
         'status' => 'boolean',
     ];
-    public function class(): HasMany
-    {
-        return $this->hasMany(Sections::class, 'class_id');
-    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ClassModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Sections extends Model
 {
@@ -25,8 +26,14 @@ class Sections extends Model
         'status' => 'boolean',
     ];
 
-    public function class()
+    public function classes(): BelongsTo
     {
         return $this->belongsTo(Classes::class, 'class_id');
+    }
+
+
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'student_id');
     }
 }

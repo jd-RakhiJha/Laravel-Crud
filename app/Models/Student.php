@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Classes;
 use App\Models\Sections;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
     protected $fillable = [
         'name',
@@ -30,7 +32,7 @@ class Student extends Model
     /**
      * Relationship with Classes
      */
-    public function class()
+    public function class(): BelongsTo
     {
         return $this->belongsTo(Classes::class, 'class_id');
     }
@@ -38,7 +40,7 @@ class Student extends Model
     /**
      * Relationship with Sections
      */
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(Sections::class, 'section_id');
     }

@@ -24,8 +24,8 @@ class StudentFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'dob' => $this->faker->date(),
-            'class_id' => Classes::factory(), // Creates a related class
-            'section_id' => Sections::factory(), // Creates a related section
+            'class_id' => Classes::factory(),
+            'section_id' => Sections::factory(),
         ];
     }
 }
