@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->date('dob')->nullable();
+            $table->foreignId('class_id');
+            $table->foreignId('section_id');
             $table->timestamps();
         });
     }

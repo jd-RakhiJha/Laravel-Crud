@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('class_id')->constrained('classes');
             $table->string('name');
             $table->integer('capacity')->default(30);
             $table->enum('status', ['active', 'inactive'])->default('active');

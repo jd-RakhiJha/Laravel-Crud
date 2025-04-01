@@ -21,7 +21,6 @@ class ClassesFactory extends Factory
             'description' => $this->faker->sentence(),
             'start_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),
-            'status' => $this->faker->boolean()
         ];
     }
 }

@@ -24,7 +24,7 @@ class SectionsFactory extends Factory
             'name' => $this->faker->word(),
             'class_id' => Classes::factory(),
             'capacity' => $this->faker->numberBetween(20, 50),
-            'status' => $this->faker->boolean(),
+            // 'status' => $this->faker->boolean(),
         ];
     }
 }

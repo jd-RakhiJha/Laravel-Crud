@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use App\HTTP\Controllers\StudentController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +31,11 @@ Route::resource('products', ProductController::class);
 
 Route::resource('users', UserController::class);
 
-Route::Resource('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class);
 
 Route::resource('orders', OrderController::class);
 
-Route::Resource('payments', PaymentController::class);
+Route::resource('payments', PaymentController::class);
 
 Route::resource('employees', EmployeeController::class);
 

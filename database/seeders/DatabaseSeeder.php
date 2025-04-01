@@ -20,16 +20,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserSeeder::class,
+            // UserSeeder::class,
+        ]);
+        $this->call([
+            ClassesSeeder::class,
         ]);
 
         $this->call([
             SectionSeeder::class,
         ]);
 
-        $this->call([
-            ClassesSeeder::class,
-        ]);
 
         $this->call([
             SectionSeeder::class,
