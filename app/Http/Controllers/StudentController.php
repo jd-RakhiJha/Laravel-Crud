@@ -11,12 +11,23 @@ use Inertia\Response;
 
 class StudentController extends Controller
 {
+
+
     public function __construct(protected StudentRepository $students) {}
 
-    public function index(): Response
+    public function index()
+    {
+        // return Inertia::render('Students/Index', [
+        //     'students' => $this->students->all(),
+        // ]);
+        // return $this->students->all();
+        return $this->students->allWithFilter(request()->all());
+    }
+
+    public function allWithFilter()
     {
         return Inertia::render('Students/Index', [
-            'students' => $this->students->all(),
+            'students' => $this->students->allWithFilter(request()->all()),
         ]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 
@@ -44,5 +46,9 @@ Route::resource('posts', PostController::class);
 Route::resource('contacts', ContactController::class);
 
 Route::resource('students', StudentController::class);
+
+Route::resource('sections', SectionController::class);
+
+Route::resource('classes', ClassesController::class);
 
 Route::get('/users/{userId}/contacts', [UserController::class, 'checkUserContacts']);
