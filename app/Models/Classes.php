@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Section;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Classes extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $table = 'classes';
 

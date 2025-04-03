@@ -14,13 +14,9 @@ class StudentRepository
         return Student::with(['class', 'section'])->get();
     }
 
-    public function allWithFilter(array $filters): Collection
+    public function allWithFilter(): Collection
     {
-        $filtersToApply = isset($filters['filters']) && is_array($filters['filters'])
-            ? $filters['filters']
-            : $filters;
-
-        return Student::filter($filtersToApply ?: [])->get();
+        return Student::filter()->with(['class', 'section'])->get();
     }
 
     public function findById(int $id): ?Student

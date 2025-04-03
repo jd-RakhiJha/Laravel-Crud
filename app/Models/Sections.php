@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ClassModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Abbasudo\Purity\Traits\Filterable;
 
 class Sections extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
     protected $table = 'sections';
 

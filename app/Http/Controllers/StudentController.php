@@ -21,7 +21,7 @@ class StudentController extends Controller
         //     'students' => $this->students->all(),
         // ]);
         // return $this->students->all();
-        return $this->students->allWithFilter(request()->all());
+        return $this->students->allWithFilter();
     }
 
     public function allWithFilter()
