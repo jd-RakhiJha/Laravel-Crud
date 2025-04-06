@@ -30,6 +30,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Route::resource('student', StudentController::class);
 Route::get('/student', function () {
     return Inertia::render('Student');
 })->middleware(['auth', 'verified'])->name('student');

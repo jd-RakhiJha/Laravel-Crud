@@ -17,18 +17,8 @@ class StudentController extends Controller
 
     public function index()
     {
-        // return Inertia::render('Students/Index', [
-        //     'students' => $this->students->all(),
-        // ]);
-        // return $this->students->all();
-        return $this->students->allWithFilter();
-    }
-
-    public function allWithFilter()
-    {
-        return Inertia::render('Students/Index', [
-            'students' => $this->students->allWithFilter(request()->all()),
-        ]);
+        $perPage = request()->input('per_page', 5);
+        return $this->students->all($perPage);
     }
 
     public function store(StudentData $studentData)

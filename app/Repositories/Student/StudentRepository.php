@@ -9,15 +9,11 @@ use Illuminate\Support\Collection;
 class StudentRepository
 {
 
-    public function all(): Collection
+    public function all($perPage)
     {
-        return Student::with(['class', 'section'])->get();
+        return Student::filter()->with(['class', 'section'])->paginate($perPage)->withQueryString();
     }
 
-    public function allWithFilter(): Collection
-    {
-        return Student::filter()->with(['class', 'section'])->get();
-    }
 
     public function findById(int $id): ?Student
     {
