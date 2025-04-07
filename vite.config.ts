@@ -7,7 +7,7 @@ import path from 'path'
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.ts', 'resources/css/app.css'], // assuming you renamed app.js → app.ts
+            input: ['resources/js/app.ts', 'resources/css/app.css'],
             refresh: true,
         }),
         vue(),
@@ -19,3 +19,5 @@ export default defineConfig({
         },
     },
 })
+
+
