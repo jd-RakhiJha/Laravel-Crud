@@ -11,8 +11,6 @@ use Inertia\Response;
 
 class StudentController extends Controller
 {
-
-
     public function __construct(protected StudentRepository $students) {}
 
     public function index()
@@ -21,6 +19,10 @@ class StudentController extends Controller
         return $this->students->all($perPage);
     }
 
+    public function classes_with_sections()
+    {
+        return $this->students->classes_with_sections();
+    }
     public function store(StudentData $studentData)
     {
         return $this->students->create($studentData);

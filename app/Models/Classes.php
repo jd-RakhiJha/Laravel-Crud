@@ -28,4 +28,12 @@ class Classes extends Model
         'end_date' => 'datetime',
         'status' => 'boolean',
     ];
+
+    /**
+     * Get all sections for this class
+     */
+    public function sections(): HasMany
+    {
+        return $this->hasMany(Sections::class, 'class_id');
+    }
 }

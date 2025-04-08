@@ -4,6 +4,7 @@ namespace App\Repositories\Student;
 
 use App\Models\Student;
 use App\Data\StudentData;
+use App\Models\Classes;
 use Illuminate\Support\Collection;
 
 class StudentRepository
@@ -12,6 +13,21 @@ class StudentRepository
     public function all($perPage)
     {
         return Student::filter()->with(['class', 'section'])->paginate($perPage)->withQueryString();
+    }
+    public function classes_with_sections()
+    {
+        return Classes::with('sections')->get()->map(function ($class) {
+            return [
+                'id' => $class->id,
+                'name' => $class->name,
+                'sections' => $class->sections->map(function ($section) {
+                    return [
+                        'id' => $section->id,
+                        'name' => $section->name,
+                    ];
+                }),
+            ];
+        });
     }
 
 

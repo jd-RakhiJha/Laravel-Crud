@@ -14,8 +14,11 @@ class StudentData extends Data
     #[Required, StringType]
     public string $name;
 
-    #[Required, IntegerType]
-    public int $age;
+    #[Required, StringType]
+    public string $phone;
+
+    #[Required, Date]
+    public string $dob;
 
     #[Required, Email]
     public string $email;
@@ -23,6 +26,9 @@ class StudentData extends Data
     #[Required, StringType]
     public string $address;
 
-    #[Required, Date]
-    public string $enrollment_date;
+    #[Required, IntegerType]
+    public int $section_id;
+
+    #[Required, IntegerType]
+    public int $class_id;
 }

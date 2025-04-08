@@ -9,6 +9,7 @@ import {
 } from '@tanstack/vue-table'
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import StudentForm from '@/Pages/StudentForm.vue';
 import { Head } from '@inertiajs/vue3';
 
 type FilterCondition = {
@@ -68,7 +69,6 @@ const pagination = ref<Pagination>({
   links: []
 })
 
-// Available fields for filtering
 const filterableFields = [
   { value: 'name', label: 'Name' },
   { value: 'email', label: 'Email' },
@@ -403,6 +403,8 @@ const table = useVueTable({
               </button>
             </div>
 
+            <StudentForm />
+<!-- 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -466,9 +468,9 @@ const table = useVueTable({
                   rows="3"
                 ></textarea>
               </div>
-            </div>
+            </div> -->
 
-            <div class="mt-6 flex justify-end space-x-3">
+            <!-- <div class="mt-6 flex justify-end space-x-3">
               <button
                 @click="showStudentModal = false"
                 class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
@@ -481,7 +483,7 @@ const table = useVueTable({
               >
                 {{ isEditing ? 'Update' : 'Save' }}
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

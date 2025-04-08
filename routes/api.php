@@ -52,3 +52,4 @@ Route::resource('sections', SectionController::class);
 Route::resource('classes', ClassesController::class);
 
 Route::get('/users/{userId}/contacts', [UserController::class, 'checkUserContacts']);
+Route::get('/classes-with-sections', [StudentController::class, 'classes_with_sections'])->name('classes-with-sections');
