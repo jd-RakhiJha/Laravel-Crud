@@ -21,7 +21,7 @@ type Student = {
   email: string
   phone: string
   address: string
-  dob: string
+  dob: string         
   class_id: number
   section_id: number
   class: {
@@ -41,7 +41,7 @@ type Pagination = {
   total: number
   links: Array<{
     url: string | null
-    label: string
+    label: string    
     active: boolean
   }>
 }
