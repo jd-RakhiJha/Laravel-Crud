@@ -35,6 +35,8 @@ Route::get('/student', function () {
     return Inertia::render('Student');
 })->middleware(['auth', 'verified'])->name('student');
 
+Route::get('/test-email', [StudentController::class, 'sendEmail'])->name('test.email');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

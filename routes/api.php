@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -53,3 +54,8 @@ Route::resource('classes', ClassesController::class);
 
 Route::get('/users/{userId}/contacts', [UserController::class, 'checkUserContacts']);
 Route::get('/classes-with-sections', [StudentController::class, 'classes_with_sections'])->name('classes-with-sections');
+
+
+
+
+Route::post('/register', [RegisterController::class, 'register']);

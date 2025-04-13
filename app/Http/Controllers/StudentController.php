@@ -8,6 +8,8 @@ use App\Models\Student;
 use App\Repositories\Student\StudentRepository;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Http\Request;
+use App\Jobs\SendEmailJob;
 
 class StudentController extends Controller
 {

@@ -10,6 +10,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Jobs\SendWelcomeEmail;
+use App\Jobs\GenerateProfilePDF;
+use App\Jobs\AddToNewsletter;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -33,7 +36,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -48,5 +51,30 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function register(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
+
+        // Create user (immediate)
+        $user = User::create($validated);
+
+        // Dispatch jobs (background)
+        SendWelcomeEmail::dispatch($user)
+            ->delay(now()->addSeconds(10)); // Send after 10 seconds
+
+        GenerateProfilePDF::dispatch($user)
+            ->onQueue('pdf-processing'); // Specific queue
+
+        AddToNewsletter::dispatch($user->email);
+
+        return response()->json([
+            'message' => 'Registration successful! Your account is being prepared.'
+        ]);
     }
 }
