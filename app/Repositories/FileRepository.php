@@ -15,11 +15,41 @@ class FileRepository
         return $this->buildFileMetadata($file, $filePath, $disk);
     }
 
+    public function uploadMultiple(array $files, string $path = 'uploads', string $disk = 'public'): array
+    {
+        $uploadedFiles = [];
+
+        foreach ($files as $file) {
+            if ($file instanceof UploadedFile) {
+                $uploadedFiles[] = $this->upload($file, $path, $disk);
+            }
+        }
+
+        return $uploadedFiles;
+    }
+
     public function delete(string $path, string $disk = 'public'): bool
     {
         return Storage::disk($disk)->exists($path)
             ? Storage::disk($disk)->delete($path)
             : false;
+    }
+
+    public function deleteMultiple(array $paths, string $disk = 'public'): bool
+    {
+        $success = true;
+
+        foreach ($paths as $path) {
+            if (!Storage::disk($disk)->exists($path)) {
+                continue;
+            }
+
+            if (!Storage::disk($disk)->delete($path)) {
+                $success = false;
+            }
+        }
+
+        return $success;
     }
 
     private function generateUniqueFileName(UploadedFile $file): string

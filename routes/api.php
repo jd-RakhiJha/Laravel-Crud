@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/files', [FileController::class, 'upload']);
+Route::post('/files/multiple', [FileController::class, 'uploadMultiple']);
 Route::delete('/files', [FileController::class, 'delete']);
 
 Route::resource('products', ProductController::class);

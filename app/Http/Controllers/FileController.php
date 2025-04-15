@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\FileService;
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\DeleteFileRequest;
+use App\Http\Requests\UploadMultipleFilesRequest;
+use App\Http\Requests\DeleteMultipleFilesRequest;
 
 class FileController extends Controller
 {
@@ -21,7 +22,6 @@ class FileController extends Controller
      */
     public function upload(UploadFileRequest $request)
     {
-        //TODO: this code is working fine i will store the file in the database with reposotory pattern
         $file = $request->file('file');
         $path = $request->input('path', 'uploads');
 
@@ -31,6 +31,20 @@ class FileController extends Controller
             'success' => true,
             'message' => 'File uploaded successfully',
             'data' => $uploadedFile
+        ], 201);
+    }
+
+    public function uploadMultiple(UploadMultipleFilesRequest $request)
+    {
+        $files = $request->file('files');
+        $path = $request->input('path', 'uploads');
+
+        $uploadedFiles = $this->fileService->uploadMultipleFiles($files, $path);
+
+        return response()->json([
+            'success' => true,
+            'message' => count($uploadedFiles) . ' files uploaded successfully',
+            'data' => $uploadedFiles
         ], 201);
     }
 

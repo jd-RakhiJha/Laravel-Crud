@@ -17,6 +17,15 @@ class FileService
     {
         return $this->fileRepository->upload($file, $path, $disk);
     }
+    public function uploadMultipleFiles($files, $path)
+    {
+        $uploadedFiles = [];
+        foreach ($files as $file) {
+            $uploadedFiles[] = $this->uploadFile($file);
+        }
+        return $uploadedFiles;
+    }
+
     public function deleteFile($path, $disk = 'public')
     {
         return $this->fileRepository->delete($path, $disk);
