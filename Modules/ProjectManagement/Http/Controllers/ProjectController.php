@@ -1,6 +1,6 @@
+
 <?php
 
-namespace Modules\ProjectManagement\Http\Controllers;
 
 use App\Repositories\ProjectRepository;
 use App\Models\Project;

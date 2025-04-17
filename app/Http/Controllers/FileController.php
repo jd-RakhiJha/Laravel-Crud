@@ -6,7 +6,6 @@ use App\Services\FileService;
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\DeleteFileRequest;
 use App\Http\Requests\UploadMultipleFilesRequest;
-use App\Http\Requests\DeleteMultipleFilesRequest;
 
 class FileController extends Controller
 {
