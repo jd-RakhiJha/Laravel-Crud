@@ -51,7 +51,7 @@
           />
         </div>
         
-        <button type="submit" :disabled="isSubmitting" class="submit-btn">
+        <button type="submit" :disabled="isSubmitting" class="submit-btn" >
           {{ isSubmitting ? 'Registering...' : 'Register' }}
         </button>
         
